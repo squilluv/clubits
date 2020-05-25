@@ -1,0 +1,68 @@
+/* Required height of parents of the Full Page Carousel for proper displaying carousel itself */
+html,
+body,
+.view {
+  height: 100%; }
+
+/* Full Page Carousel itself*/
+.carousel {
+  height: 100%; }
+  .carousel .carousel-inner {
+    height: 100%; }
+    .carousel .carousel-inner .carousel-item,
+    .carousel .carousel-inner .active {
+      height: 100%; }
+
+/* Navbar animation */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.top-nav-collapse {
+  background-color: rgb(0, 0, 0); }
+
+/* Adding color to the Navbar on mobile */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: rgb(0, 0, 0); } }
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+  background-color: rgb(0, 0, 0); }
+
+@font-face {
+    font-family: "Lazer84";
+    src: url("../font/Lazer84.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "LiS";
+  src: url("../font/11525.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MRob";
+  color: red;
+  src: url("../font/11533.ttf") format("truetype");
+}
+
+.lis{
+  font-family: "LiS";
+}
+
+.div{
+  font-family: "LiS";
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+

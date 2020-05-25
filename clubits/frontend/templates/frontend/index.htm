@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.css" />
+    <link rel="stylesheet" href="{% static "frontend/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/css/mdb.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/css/style.min.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/css/style.css" %}">
+    <title>ClubITS</title>
+    <style>
+        html,
+        body,
+        header,
+        .view {
+            height: 100vh;
+        }
+
+        @media (max-width: 740px) {
+
+            html,
+            body,
+            header,
+            .view {
+                height: 1000px;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 850px) {
+
+            html,
+            body,
+            header,
+            .view {
+                height: 600px;
+            }
+        }
+
+        .btn .fa {
+            margin-left: 3px;
+        }
+
+        .top-nav-collapse {
+            background-color: #000 !important;
+        }
+
+        .navbar:not(.top-nav-collapse) {
+            background: transparent !important;
+        }
+
+        @media (max-width: 991px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #000 !important;
+            }
+        }
+
+        .btn-white {
+            color: black !important;
+        }
+
+        h6 {
+            line-height: 1.7;
+        }
+
+        .rgba-gradient {
+            background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.7)), to(rgba(29, 210, 177, 0.7)));
+            background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+        }
+
+        .view1 {
+            background-image: url('../../static/frontend/src/carousel1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .view2 {
+            background-image: url('../../static/frontend/src/carousel2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .view3 {
+            background-image: url('../../static/frontend/src/carousel3.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" style="font-family: LiS;"></div>
+
+    <script src="{% static "frontend/main.js" %}"></script>
+    <script type="text/javascript" src="{% static "frontend/js/jquery-3.3.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "frontend/js/popper.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "frontend/js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "frontend/js/mdb.min.js" %}"></script>
+    <script>
+        $('body').scrollspy({
+            target: '.scrollspy'
+        });
+    </script>
+</body>
+
+</html>
