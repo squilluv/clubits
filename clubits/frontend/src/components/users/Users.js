@@ -6,6 +6,8 @@ import { getStudents } from '../../actions/students'
 import { getPersons } from '../../actions/persons'
 import { MDBDataTable } from 'mdbreact'
 
+import RegisterStaff from '../users/RegisterStaff'
+
 export class Users extends Component {
 
     constructor(props) {
@@ -78,6 +80,10 @@ export class Users extends Component {
         }
         return (
             <Fragment>
+                <RegisterStaff />
+                <div className="text-right">
+                    <a className="btn btn-dark btn-rounded mb-4" data-toggle="modal" data-target="#modalRegStaffForm">Добавить сотрудника</a>
+                </div>
                 <div className="my-5 mb-5 pb-5">
                     <div className="modal fade" id="modalInfoFormU" role="dialog" aria-labelledby="myModalLabel"
                         aria-hidden="true">

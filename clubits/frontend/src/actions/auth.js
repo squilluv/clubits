@@ -10,6 +10,8 @@ import {
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
+    REGISTERSTAFF_FAIL,
+    REGISTERSTAFF_SUCCESS
 } from './types';
 
 export const loadUser = () => (dispatch, getState) => {
@@ -78,6 +80,32 @@ export const register = ({ username, password, email }) => (dispatch) => {
             dispatch(returnErrors(err.response.data, err.response.status));
             dispatch({
                 type: REGISTER_FAIL,
+            });
+        });
+};
+
+export const registerStaff = ({ username, password, email }) => (dispatch) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+
+    const body = JSON.stringify({ username, email, password });
+
+    axios
+        .post('/api/auth/registerstaff', body, config)
+        .then((res) => {
+            dispatch(createMessage({ register: "Сотрудник зарегистрирован" }))
+            dispatch({
+                type: REGISTERSTAFF_SUCCESS,
+                payload: res.data,
+            });
+        })
+        .catch((err) => {
+            dispatch(returnErrors(err.response.data, err.response.status));
+            dispatch({
+                type: REGISTERSTAFF_FAIL,
             });
         });
 };
