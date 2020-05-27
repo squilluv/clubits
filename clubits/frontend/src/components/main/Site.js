@@ -755,6 +755,9 @@ export class Site extends Component {
 
                         </section>
                     </div>
+                </div>
+                <div style={{ backgroundImage: "url(../../static/frontend/src/corusel/5.jpg)", backgroundRepeat: "repeat-y, repeat-y", backgroundPosition: "left, right", backgroundAttachment: "fixed, fixed", backgroundSize: "cover" }}>
+                    <br />
                     <div className="container card cardina1 rounded-pill white" id="register">
                         <section className="container">
 
@@ -779,26 +782,10 @@ export class Site extends Component {
                             <form className="mx-md-5" action="">
 
                                 <div className="row">
-                                    <div className="col-md-6 mb-4">
-
-                                        <div className="card">
-                                            <div className="card-body px-4">
-                                                <div className="md-form md-outline mt-0">
-                                                    <input type="text" id="name" className="form-control" />
-                                                    <label>Your Name</label>
-                                                </div>
-                                                <div className="md-form md-outline">
-                                                    <input type="text" id="email" className="form-control" />
-                                                    <label>Your Email Address</label>
-                                                </div>
-                                                <div className="md-form md-outline">
-                                                    <textarea id="message" className="md-textarea form-control" rows="3"></textarea>
-                                                    <label>Your Message</label>
-                                                </div>
-
-                                                <button type="submit" className="btn btn-primary btn-md btn-block ml-0 mb-0">Submit inquiry</button>
-
-                                            </div>
+                                    <div className="col-md-4 mb-4">
+                                        <div className="overlay zoom">
+                                            <img src="../../static/frontend/src/giphy.gif" className="img-fluid rounded-circle"
+                                                alt="zoom" />
                                         </div>
 
                                     </div>

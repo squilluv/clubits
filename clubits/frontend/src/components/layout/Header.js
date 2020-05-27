@@ -36,8 +36,8 @@ export class Header extends Component {
         const { loading } = this.state;
         if (loading) {
             return (
-                <div style={{ width: "100%", height: "100%", top: 0, left: 0, position: "fixed", backgroundColor: "white", zIndex: "9999" }}>
-                    <img src="../../static/frontend/src/loader.gif" className="img-fluid rounded-circle" style={{ position: "absolute", zIndex: "9999", opacity: "1", top: "50%", left: "50%", width: 400, height: 400, margin: "-200px 0 0 -200px", backgroundColor: "black" }} />
+                <div style={{ width: "100%", height: "100%", top: 0, left: 0, position: "fixed", backgroundColor: "#ffc0cb", zIndex: "9999" }}>
+                    <img src="../../static/frontend/src/bitch.gif" className="img-fluid rounded-circle" style={{ position: "absolute", zIndex: "9999", opacity: "1", top: "50%", left: "50%", width: 400, height: 400, margin: "-200px 0 0 -200px"}} />
                 </div>
             )
         } else {
