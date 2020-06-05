@@ -59,6 +59,7 @@ export const addCourse = course => (dispatch, getState) => {
                 payload: res.data
             })
         }).catch(err => {
+            dispatch(createMessage({ notAdd: "Не удалось добавить" }))
             const errors = {
                 msg: err.response.data,
                 status: err.response.status
