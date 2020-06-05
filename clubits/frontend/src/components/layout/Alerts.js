@@ -27,8 +27,9 @@ export class Alerts extends Component {
             if (message.addStudent) alert.success(message.addStudent);
             if (message.register) alert.success(message.register);
             if (message.putStudent) alert.success(message.putStudent);
+            if (message.notAdd) alert.error(message.notAdd);
+            if (message.notPut) alert.error(message.notPut);
             if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
-            if (message.CheckTrue) alert.error(message.CheckTrue);
             if (message.CheckTrue) alert.error(message.CheckTrue);
         }
     }

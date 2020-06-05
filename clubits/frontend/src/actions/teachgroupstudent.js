@@ -37,6 +37,7 @@ export const putTeachgroupstudent = teachgroupstudent => (dispatch, getState) =>
                 payload: teachgroupstudent.id
             })
         }).catch(err => {
+            dispatch(createMessage({ notPut: "Не удалось изменить" }))
             const errors = {
                 msg: err.response.data,
                 status: err.response.status
@@ -58,6 +59,7 @@ export const addTeachgroupstudent = teachgroupstudent => (dispatch, getState) =>
                 payload: res.data
             })
         }).catch(err => {
+            dispatch(createMessage({ notAdd: "Не удалось добавить" }))
             const errors = {
                 msg: err.response.data,
                 status: err.response.status

@@ -37,6 +37,7 @@ export const putCourse = course => (dispatch, getState) => {
                 payload: course.id
             })
         }).catch(err => {
+            dispatch(createMessage({ notPut: "Не удалось изменить" }))
             const errors = {
                 msg: err.response.data,
                 status: err.response.status

@@ -11,7 +11,7 @@ export class Form extends Component {
         second_name: '',
         last_name: '',
         position: '',
-        work: '',
+        work: '1',
         user: ''
     }
 
@@ -31,11 +31,7 @@ export class Form extends Component {
         e.preventDefault();
         const { name, second_name, last_name, position, work, user } = this.state
         const employer = { name, second_name, last_name, position, work, user }
-        if (user == "") {
-            user = "Строка способная убить"
-        } else {
-            this.props.addEmployer(employer)
-        }
+        this.props.addEmployer(employer)
         this.setState({
             name: '',
             second_name: '',

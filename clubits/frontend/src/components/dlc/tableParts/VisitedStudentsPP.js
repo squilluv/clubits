@@ -178,7 +178,7 @@ export class VisitedStudentsPut extends Component {
                         ))}
                     </tbody>
                 </table>
-                <div className="d-flex justify-content-center" data-toggle="modal" data-target="#modalPutFormV">
+                <div className="d-flex justify-content-center" data-toggle="modal" data-target="#modalLoginFormV">
                     <button className="btn btn-white black-text" onClick={() => { this.props.updateData("2") }}>Сохранить изменения</button>
                 </div>
             </Fragment >

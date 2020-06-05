@@ -55,7 +55,7 @@ export class Form extends Component {
         });
         setTimeout(() => {
             this.setState({
-                title: String(this.props.teachgroup.filter(cf => cf.id == this.state.teach_group).map(c => this.props.course.filter(tf => tf.id == c.course).map(t => t.name)))
+                title: String(this.props.teachgroup.filter(cf => cf.id == this.state.teach_group).map(c => this.props.course.filter(tf => tf.id == c.course).map(t => t.name)) + " " + this.state.date)
             });
         }, 100);
     }
@@ -182,6 +182,19 @@ export class Form extends Component {
                                             <option key={u.id} value={u.id}>{u.second_name + " " + u.name + " " + u.last_name}</option>
                                         ))}
                                     </select>
+                                </div>
+
+                                <div className="md-form mb-5 input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text md-addon" id="material-addon3">Заголовок: </span>
+                                    </div>
+                                    <input
+                                        className="form-control validate name"
+                                        type="text"
+                                        name="title"
+                                        onChange={this.onChange}
+                                        value={title}
+                                    />
                                 </div>
 
                             </div>

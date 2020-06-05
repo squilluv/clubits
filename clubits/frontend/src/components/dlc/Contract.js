@@ -85,7 +85,10 @@ export class Contract extends Component {
         var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
 
         // Specify file name
-        filename = filename ? filename + '.doc' : 'document.doc';
+        if (document.getElementById("namedoc") != null) {
+            filename = filename ? filename + '.doc' : document.getElementById("namedoc").innerHTML + '.doc';
+        }
+        
 
         // Create download link element
         var downloadLink = document.createElement("a");
@@ -461,6 +464,9 @@ export class Contract extends Component {
 
                                         />
 
+                                    </div>
+                                    <div id="namedoc" className="d-lg-none">
+                                        {this.props.persons.filter(sf => sf.id == person).map(s => s.second_name + " " + s.name + " " + s.last_name) + " " + date}
                                     </div>
                                     <div id="avothz" className="d-lg-none">
                                         <h4><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ДОГОВОР № КУ/ УТ 1000{id}</strong></h4>
