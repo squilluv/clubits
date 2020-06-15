@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import PropTypes, { string } from 'prop-types'
 import { addTeachgroup, getTeachgroup } from '../../actions/teachgroup'
 import { getCourse } from '../../actions/course'
 import { getEmployers } from '../../actions/employee'
@@ -15,7 +15,7 @@ export class Form extends Component {
             course: '',
             start: '',
             end: '',
-            work: '',
+            work: '1',
             newId: "",
             teacher: '',
             checkTR: "0",
@@ -37,7 +37,12 @@ export class Form extends Component {
         this.props.getTeachgroup()
     }
 
-    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+        if (e.target.name == "course") {
+            this.setState({ teacher: new String(this.props.course.filter(cf => cf.id == e.target.value).map(c => c.teacher)) })
+        }
+    }
 
     onSubmit = e => {
         e.preventDefault();

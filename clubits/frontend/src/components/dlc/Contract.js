@@ -81,16 +81,12 @@ export class Contract extends Component {
             type: 'application/msword'
         });
 
-        // Specify link url
         var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
 
-        // Specify file name
         if (document.getElementById("namedoc") != null) {
             filename = filename ? filename + '.doc' : document.getElementById("namedoc").innerHTML + '.doc';
         }
-        
 
-        // Create download link element
         var downloadLink = document.createElement("a");
 
         document.body.appendChild(downloadLink);
@@ -98,13 +94,8 @@ export class Contract extends Component {
         if (navigator.msSaveOrOpenBlob) {
             navigator.msSaveOrOpenBlob(blob, filename);
         } else {
-            // Create a link to the file
             downloadLink.href = url;
-
-            // Setting the file name
             downloadLink.download = filename;
-
-            //triggering the function
             downloadLink.click();
         }
 
@@ -537,7 +528,7 @@ export class Contract extends Component {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ЗАКАЗЧИК&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ИСПОЛНИТЕЛЬ<br /><br /><br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________/_____________________/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___________________Шишкова О.Р.
                                     </div>
-                                    <br /><br /><br /><br /><button onClick={this.PrintContract}>Сформировать договор</button>
+                                    <br /><br /><button onClick={this.PrintContract}>Сформировать договор</button>
                                 </div>
                             </form>
                         </div>

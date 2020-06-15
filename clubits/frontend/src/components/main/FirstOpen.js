@@ -76,7 +76,7 @@ export class FirstOpem extends Component {
                                 </div></td>
                             </tr>
                             <tr>
-                                <td>Этап 5:</td>
+                                <td>Этап 4:</td>
                                 <td><div className="text-left">
                                     <h4><a className="black-text">Ожидайте подтверждение заявки</a></h4>
                                 </div></td>

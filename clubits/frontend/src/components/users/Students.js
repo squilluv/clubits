@@ -253,10 +253,7 @@ export class Students extends Component {
                                             onChange={this.onChange}
                                             value={category}
                                         >
-                                            <option value="" disabled>Выберите категорию</option>
-                                            <option value="Работающий">Работающий</option>
-                                            <option value="Студент">Студент</option>
-                                            <option value="Школьник">Школьник</option>
+                                            <option value="Школьник" disabled selected>Школьник</option>
                                         </select>
                                     </div>
                                     <div className="md-form mb-5 input-group">

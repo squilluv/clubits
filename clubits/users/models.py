@@ -20,7 +20,7 @@ class Place(models.Model):
 
 class Students(models.Model):
     name = models.CharField(max_length=150)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False)
     second_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     date_bitrh = models.DateField()
@@ -35,7 +35,7 @@ class Students(models.Model):
 
 class Persons(models.Model):
     name = models.CharField(max_length=45)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False)
     second_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     date_birth = models.DateField()
@@ -54,7 +54,7 @@ class Persons(models.Model):
 
 class Employee(models.Model):
     name = models.CharField(max_length=45)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False)
     second_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     position = models.CharField(max_length=45)

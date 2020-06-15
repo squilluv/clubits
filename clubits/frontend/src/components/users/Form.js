@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { addStudent } from '../../actions/students'
 import { getUsers } from '../../actions/users'
 import { getPlace } from '../../actions/place'
+import { getPersons } from '../../actions/persons'
 
 import InputMask from 'react-input-mask'
 
@@ -15,7 +16,7 @@ export class Form extends Component {
         last_name: '',
         date_bitrh: '',
         phone: '',
-        category: '',
+        category: 'Школьник',
         place_life: '',
         documentp: '',
         place: '',
@@ -43,10 +44,20 @@ export class Form extends Component {
         addStudent: PropTypes.func.isRequired,
         getUsers: PropTypes.func.isRequired,
         getPlace: PropTypes.func.isRequired,
-        place: PropTypes.array.isRequired
+        place: PropTypes.array.isRequired,
+        getPersons: PropTypes.func.isRequired,
+        persons: PropTypes.array.isRequired
     }
 
-    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+        if (e.target.name == "user") {
+            this.setState({
+                second_name: new String(this.props.persons.filter(pf => pf.user == e.target.value).map(p => p.second_name)),
+                place_life: new String(this.props.persons.filter(pf => pf.user == e.target.value).map(p => p.adress))
+            })
+        }
+    }
 
     onSubmit = e => {
         e.preventDefault();
@@ -86,6 +97,21 @@ export class Form extends Component {
                         </div>
                         <form onSubmit={this.onSubmit}>
                             <div className="modal-body mx-3">
+
+                                <div className="md-form mb-4">
+                                    <select
+                                        className="browser-default custom-select lis"
+                                        name="user"
+                                        onChange={this.onChange}
+                                        value={user}
+                                    >
+                                        <option value="" disabled>Выберите пользователя</option>
+                                        {this.props.users.map(u => (
+                                            <option key={u.id} value={u.id}>{u.username}</option>
+                                        ))}
+                                    </select>
+                                </div>
+
                                 <div className="md-form mb-5 input-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text md-addon" id="material-addon3">Имя: </span>
@@ -171,10 +197,7 @@ export class Form extends Component {
                                         onChange={this.onChange}
                                         value={category}
                                     >
-                                        <option value="" disabled>Выберите категорию</option>
-                                        <option value="Работающий">Работающий</option>
-                                        <option value="Студент">Студент</option>
-                                        <option value="Школьник">Школьник</option>
+                                        <option value="Школьник" disabled selected>Школьник</option>
                                     </select>
                                 </div>
                                 <div className="md-form mb-5 input-group">
@@ -190,20 +213,6 @@ export class Form extends Component {
 
 
                                     />
-                                </div>
-
-                                <div className="md-form mb-4">
-                                    <select
-                                        className="browser-default custom-select lis"
-                                        name="user"
-                                        onChange={this.onChange}
-                                        value={user}
-                                    >
-                                        <option value="" disabled>Выберите пользователя</option>
-                                        {this.props.users.map(u => (
-                                            <option key={u.id} value={u.id}>{u.username}</option>
-                                        ))}
-                                    </select>
                                 </div>
 
                                 <div className="md-form mb-4">
@@ -236,7 +245,8 @@ export class Form extends Component {
 
 const mapStateToProps = state => ({
     users: state.users.users,
-    place: state.place.place
+    place: state.place.place,
+    persons: state.persons.persons
 })
 
-export default connect(mapStateToProps, { getUsers, getPlace, addStudent })(Form)
+export default connect(mapStateToProps, { getUsers, getPlace, addStudent, getPersons })(Form)

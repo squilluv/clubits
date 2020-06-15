@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 import { getVisitedstudents, addVisitedstudents, putVisitedstudents, deleteVisitedstudents } from '../../../actions/visitedstudents'
 import { getStudents } from '../../../actions/students'
+import { getTeachgroupstudent } from '../../../actions/teachgroupstudent'
+import { getVisited } from '../../../actions/visited'
 
 import { MDBDataTable } from 'mdbreact'
 
@@ -25,6 +27,10 @@ export class VisitedStudentsPut extends Component {
     static propTypes = {
         students: PropTypes.array.isRequired,
         getStudents: PropTypes.func.isRequired,
+        teachgroupstudent: PropTypes.array.isRequired,
+        getTeachgroupstudent: PropTypes.func.isRequired,
+        visited: PropTypes.array.isRequired,
+        getVisited: PropTypes.func.isRequired,
         visitedstudents: PropTypes.array.isRequired,
         getVisitedstudents: PropTypes.func.isRequired,
         addVisitedstudents: PropTypes.func.isRequired,
@@ -37,7 +43,17 @@ export class VisitedStudentsPut extends Component {
         this.props.getStudents()
     }
 
-    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+        if (e.target.name == "student") {
+            const sid = new String(this.props.visitedstudents.filter(vsf => vsf.visited == this.state.visited && vsf.student == e.target.value).map(vs => vs.id))
+            if (sid == "") {
+
+            } else {
+                this.setState({ student: "" })
+            }
+        }
+    }
 
     onSubmit = e => {
         e.preventDefault();
@@ -107,9 +123,10 @@ export class VisitedStudentsPut extends Component {
                                             onChange={this.onChange}
                                             value={student} >
                                             <option value="" disabled>Выберите студента</option>
-                                            {this.props.students.map(u => (
-                                                <option key={u.id} value={u.id}>{u.second_name + " " + u.name + " " + u.last_name}</option>
-                                            ))}
+                                            {this.props.visited.filter(vf => vf.id == visited).map(v => this.props.teachgroupstudent.filter(tgf => tgf.teach_groop == v.teach_group)
+                                                .map(tg => this.props.students.filter(sf => sf.id == tg.student).map(u => (
+                                                    <option key={u.id} value={u.id}>{u.second_name + " " + u.name + " " + u.last_name}</option>
+                                                ))))}
 
                                         </select>
 
@@ -188,7 +205,9 @@ export class VisitedStudentsPut extends Component {
 
 const mapStateToProps = state => ({
     visitedstudents: state.visitedstudents.visitedstudents,
-    students: state.students.students
+    students: state.students.students,
+    teachgroupstudent: state.teachgroupstudent.teachgroupstudent,
+    visited: state.visited.visited
 })
 
-export default connect(mapStateToProps, { getVisitedstudents, addVisitedstudents, putVisitedstudents, deleteVisitedstudents, getStudents })(VisitedStudentsPut)
+export default connect(mapStateToProps, { getVisitedstudents, addVisitedstudents, putVisitedstudents, deleteVisitedstudents, getStudents, getTeachgroupstudent, getVisited })(VisitedStudentsPut)

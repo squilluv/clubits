@@ -45,6 +45,7 @@ export class Form extends Component {
         setTimeout(() => {
             this.df()
         }, 300);
+        this.GetNowDate()
     }
 
     df() {
@@ -83,6 +84,11 @@ export class Form extends Component {
         });
     };
 
+    GetNowDate() {
+        const date = new Date()
+        this.setState({ date: date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) })
+    }
+
     render() {
         const { date, status, student, person, teach_group, start, end, price, user } = this.state
         return (
@@ -108,6 +114,7 @@ export class Form extends Component {
                                         name="date"
                                         onChange={this.onChange}
                                         value={date}
+                                        disabled
                                     />
                                 </div>
                                 <div className="md-form mb-5 input-group">

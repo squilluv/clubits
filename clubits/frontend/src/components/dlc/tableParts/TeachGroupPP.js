@@ -34,7 +34,17 @@ export class TeachGroupPP extends Component {
         this.props.getTeachgroupstudent()
     }
 
-    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+        if (e.target.name == "student") {
+            const sid = new String(this.props.teachgroupstudent.filter(vsf => vsf.teach_groop == this.state.teach_groop && vsf.student == e.target.value).map(vs => vs.id))
+            if (sid == "") {
+
+            } else {
+                this.setState({ student: "" })
+            }
+        }
+    }
 
     onSubmit = e => {
         e.preventDefault();

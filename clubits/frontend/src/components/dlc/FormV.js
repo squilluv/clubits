@@ -47,12 +47,16 @@ export class Form extends Component {
         this.props.getTeachplan()
         this.props.getTeachgroup()
         this.props.getCourse()
+        this.GetNowDate()
     }
 
     onChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         });
+        if (e.target.name == "teach_group") {
+            this.setState({ teacher: new String(this.props.teachgroup.filter(cf => cf.id == e.target.value).map(c => c.teacher)) })
+        }
         setTimeout(() => {
             this.setState({
                 title: String(this.props.teachgroup.filter(cf => cf.id == this.state.teach_group).map(c => this.props.course.filter(tf => tf.id == c.course).map(t => t.name)) + " " + this.state.date)
@@ -89,6 +93,11 @@ export class Form extends Component {
                 teacher: ''
             });
         }
+    }
+
+    GetNowDate() {
+        const date = new Date()
+        this.setState({ date: date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) })
     }
 
     render() {
@@ -143,8 +152,6 @@ export class Form extends Component {
                                         onChange={this.onChange}
                                         value={start}
                                     />
-                                </div>
-                                <div className="md-form mb-5 input-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text md-addon" id="material-addon32">Конец: </span>
                                     </div>

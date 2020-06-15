@@ -31,12 +31,19 @@ export class Chart extends React.Component {
             loading: {
                 labels: this.props.contract.map(tg => tg.date + " - " + this.props.persons.filter(pf => pf.id == tg.person).map(p => p.second_name + " " + p.name + " " + p.last_name)),
                 datasets: [{
-                    label: 'price',
+                    label: 'Оплата',
                     data: this.props.contract.map(tg => tg.price),
-                    borderWidth: 1
+                    borderWidth: 2
                 }]
             }
         })
+    }
+
+    randColor() {
+        var r = Math.floor(Math.random() * (256)),
+            g = Math.floor(Math.random() * (256)),
+            b = Math.floor(Math.random() * (256));
+        return '#' + r.toString(16) + g.toString(16) + b.toString(16);
     }
 
 

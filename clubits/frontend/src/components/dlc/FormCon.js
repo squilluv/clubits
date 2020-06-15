@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { addContract } from '../../actions/contract'
-import { addTeachgroupstudent } from '../../actions/teachgroupstudent'
+import { addTeachgroupstudent, getTeachgroupstudent } from '../../actions/teachgroupstudent'
 import { getStudents } from '../../actions/students'
 import { getTeachgroup } from '../../actions/teachgroup'
 import { getPersons } from '../../actions/persons'
 import { getCourse } from '../../actions/course'
+import { getUsers } from '../../actions/users'
 
 export class Form extends Component {
 
@@ -33,7 +34,9 @@ export class Form extends Component {
         teachgroup: PropTypes.array.isRequired,
         getTeachgroup: PropTypes.func.isRequired,
         course: PropTypes.array.isRequired,
-        getCourse: PropTypes.func.isRequired
+        getCourse: PropTypes.func.isRequired,
+        teachgroupstudent: PropTypes.array.isRequired,
+        getTeachgroupstudent: PropTypes.func.isRequired
     }
 
     componentDidMount() {
@@ -41,9 +44,18 @@ export class Form extends Component {
         this.props.getPersons()
         this.props.getTeachgroup()
         this.props.getCourse()
+        this.GetNowDate()
     }
 
-    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+        if (e.target.name == "student") {
+            this.setState({
+                person: new String(this.props.students.filter(cf => cf.id == e.target.value).map(c => this.props.persons.filter(pf => pf.user == c.user).map(p => p.id))),
+                teach_group: new String(this.props.teachgroupstudent.filter(tgf => tgf.student == e.target.value).map(tg => this.props.teachgroup.filter(tf => tf.id == tg.teach_groop).map(t => t.id)))
+            })
+        }
+    }
 
     onSubmit = e => {
         e.preventDefault();
@@ -61,6 +73,11 @@ export class Form extends Component {
             price: ''
         });
     };
+
+    GetNowDate() {
+        const date = new Date()
+        this.setState({ date: date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) })
+    }
 
     render() {
         const { date, status, student, person, teach_group, start, end, price } = this.state
@@ -149,8 +166,6 @@ export class Form extends Component {
 
 
                                     />
-                                </div>
-                                <div className="md-form mb-5 input-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text md-addon" id="material-addon123">Конец: </span>
                                     </div>
@@ -198,7 +213,8 @@ const mapStateToProps = state => ({
     students: state.students.students,
     persons: state.persons.persons,
     teachgroup: state.teachgroup.teachgroup,
-    course: state.course.course
+    course: state.course.course,
+    teachgroupstudent: state.teachgroupstudent.teachgroupstudent
 })
 
-export default connect(mapStateToProps, { addTeachgroupstudent, addContract, getPersons, getStudents, getTeachgroup, getCourse })(Form)
+export default connect(mapStateToProps, { addTeachgroupstudent, addContract, getPersons, getStudents, getTeachgroup, getCourse, getTeachgroupstudent })(Form)

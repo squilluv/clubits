@@ -139,7 +139,7 @@ export class Persons extends Component {
                     <div className="modal-dialog modal-lg" role="document">
                         <div className="modal-content">
                             <div className="modal-header text-center">
-                                <h4 className="modal-title w-100 font-weight-bold">Изменить данные физ. лица</h4>
+                                <h4 className="modal-title w-100 font-weight-bold">Изменить данные родителя</h4>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -235,24 +235,23 @@ export class Persons extends Component {
                                             onChange={this.onChange}
                                             value={document_type}
                                         >
-                                            <option value="" disabled>Выберите тип документа</option>
-                                            <option value="Водительское удостоверение">Водительское удостоверение</option>
-                                            <option value="Паспорт">Паспорт</option>
-                                            <option value="Свидетельство о рождении">Свидетельство о рождении</option>
-                                            <option value="СНИЛС">СНИЛС</option>
+                                            <option value="Паспорт" disabled selected>Паспорт</option>
                                         </select>
                                     </div>
                                     <div className="md-form mb-5 input-group">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text md-addon" id="material-addon3">Гендер: </span>
                                         </div>
-                                        <input
-                                            className="form-control"
-                                            type="text"
+                                        <select
+                                            className="browser-default custom-select lis"
                                             name="gender"
                                             onChange={this.onChange}
                                             value={gender}
-                                        />
+                                        >
+                                            <option value="" disabled>Выберите пол</option>
+                                            <option value="Женский">Выберите пол</option>
+                                            <option value="Мужской">Выберите пол</option>
+                                        </select>
                                     </div>
                                     <div className="md-form mb-5 input-group">
                                         <div className="input-group-prepend">
@@ -288,12 +287,7 @@ export class Persons extends Component {
                                             onChange={this.onChange}
                                             value={status}
                                         >
-                                            <option value="" disabled>Выберите статус</option>
-                                            <option value="Родитель">Родитель</option>
-                                            <option value="Сотрудник">Сотрудник</option>
-                                            <option value="Ученик">Ученик</option>
-                                            <option value="Кандидат">Кандидат</option>
-                                            <option value="Представитель контр агента">Представитель контр агента</option>
+                                            <option value="Родитель" disabled selected>Родитель</option>
                                         </select>
                                     </div>
                                     <div className="md-form mb-5 input-group">

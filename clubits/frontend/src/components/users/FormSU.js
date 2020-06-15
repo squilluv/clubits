@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { addStudent } from '../../actions/students'
 import { getUsers } from '../../actions/users'
 import { getPlace } from '../../actions/place'
+import { getPersons } from '../../actions/persons'
 
 import InputMask from 'react-input-mask'
 
@@ -15,7 +16,7 @@ export class Form extends Component {
         last_name: '',
         date_bitrh: '',
         phone: '',
-        category: '',
+        category: 'Школьник',
         place_life: '',
         documentp: '',
         place: '',
@@ -35,6 +36,10 @@ export class Form extends Component {
 
         } else {
             this.setState({ user: this.props.userId })
+            this.setState({
+                second_name: new String(this.props.persons.filter(pf => pf.user == this.props.userId).map(p => p.second_name)),
+                place_life: new String(this.props.persons.filter(pf => pf.user == this.props.userId).map(p => p.adress))
+            })
         }
     }
 
@@ -43,7 +48,9 @@ export class Form extends Component {
         addStudent: PropTypes.func.isRequired,
         getUsers: PropTypes.func.isRequired,
         getPlace: PropTypes.func.isRequired,
-        place: PropTypes.array.isRequired
+        place: PropTypes.array.isRequired,
+        getPersons: PropTypes.func.isRequired,
+        persons: PropTypes.array.isRequired
     }
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -171,10 +178,7 @@ export class Form extends Component {
                                         onChange={this.onChange}
                                         value={category}
                                     >
-                                        <option value="" disabled>Выберите категорию</option>
-                                        <option value="Работающий">Работающий</option>
-                                        <option value="Студент">Студент</option>
-                                        <option value="Школьник">Школьник</option>
+                                        <option value="Школьник" disabled selected>Школьник</option>
                                     </select>
                                 </div>
                                 <div className="md-form mb-5 input-group">
@@ -238,7 +242,8 @@ export class Form extends Component {
 
 const mapStateToProps = state => ({
     users: state.users.users,
-    place: state.place.place
+    place: state.place.place,
+    persons: state.persons.persons
 })
 
-export default connect(mapStateToProps, { getUsers, getPlace, addStudent })(Form)
+export default connect(mapStateToProps, { getUsers, getPlace, addStudent, getPersons })(Form)

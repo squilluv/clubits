@@ -72,7 +72,7 @@ export default function Dashboard() {
                                 <a className="nav-link active black-text font-weight-bold" data-toggle="tab" href="#panel5" role="tab">Пользователи системы</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link black-text font-weight-bold" data-toggle="tab" href="#panel8" role="tab">Физические лица</a>
+                                <a className="nav-link black-text font-weight-bold" data-toggle="tab" href="#panel8" role="tab">Родители</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link black-text font-weight-bold" data-toggle="tab" href="#panel6" role="tab">Ученики</a>
