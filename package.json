@@ -32,7 +32,7 @@
     "chart.js": "^2.9.3",
     "css-loader": "^3.5.3",
     "jquery": "^3.5.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "mdbreact": "^4.25.1",
     "pdfmake": "^0.1.65",
     "prop-types": "^15.7.2",
